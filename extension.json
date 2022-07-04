@@ -35,6 +35,13 @@
             "description": "Terraform Binary Path.  Only set this if your Terraform binary is not available in your PATH.",
             "type": "string",
             "default": ""
+        },
+        {
+            "key": "hcl.terraform-lsp-binary",
+            "title": "Terraform language Server Path",
+            "type": "string",
+            "description": "The Terraform language server binary path. Only set this if your Terraform binary is not available in your PATH.",
+            "default": ""
         }
     ],
     "commands": {

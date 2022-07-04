@@ -1,8 +1,11 @@
+const TFlanguageServer = require('./tflanguageserver.js');
+
 var onWillSaveHandler = null;
 var commandRegister = null;
 var configChangeObserver = null;
 var configChangeObserverPath = null;
 var formatterBinPath = null;
+var langserver = null;
 
 function setTerraformBinPath() {
 	try {
@@ -18,6 +21,8 @@ function setTerraformBinPath() {
 
 exports.activate = function() {
 	setTerraformBinPath();
+	langserver = new TFlanguageServer.TFlanguageServer();
+	console.log(langserver);
 
 	commandRegister = nova.commands.register("hcl.terraform-format", (editor) =>{
 		format(editor);
@@ -61,6 +66,12 @@ exports.deactivate = function() {
 	}
 	if (configChangeObserverPath !== null) {
 		configChangeObserverPath.dispose();
+	}
+	}
+	if (langserver) {
+		langserver.deactivate();
+		langserver = null;
+		console.log("...language server stoped");
 	}
 }
 
