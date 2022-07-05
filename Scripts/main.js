@@ -73,8 +73,6 @@ exports.deactivate = function() {
 		console.log("...language server stoped");
 	}
 }
-	
-
 
 // Locate the Terraform binary in the following way:
 // 1. If the binary is provided by the user configuration, use that.
