@@ -98,7 +98,7 @@
         <!-- How to parse strings -->
         <!-- Also includes parsing HEREDOCs, and mapping in appropriate parsers for HEREDOC strings -->
         <collection name="strings">
-            <scope name="hcl.string.double-quoted">
+            <scope name="hcl.string.double-quoted" spell-check="true">
                 <starts-with>
                     <expression>&quot;</expression>
                 </starts-with>
@@ -111,7 +111,7 @@
                 </subscopes>
             </scope>
         </collection>
-        <collection name="string-escapes">
+        <collection name="string-escapes" spell-check="true">
             <scope name="hcl.string.double-quoted.escape">
                 <expression>(?:\\(&quot;|n|r|t|\\|u[\d]{4}|U[\d]{8}))</expression>
             </scope>
@@ -143,19 +143,19 @@
             </scope>
         </collection>
         <!-- Core assignable values -->
-        <collection name="values">
+        <collection name="values" >
             <scope name="hcl.value.null">
                 <strings>
                     <string>null</string>
                 </strings>
             </scope>
-            <scope name="hcl.value.boolean">
+            <scope name="hcl.value.boolean" spell-check="true">
                 <strings>
                     <string>true</string>
                     <string>false</string>
                 </strings>
             </scope>
-            <scope name="hcl.keyword">
+            <scope name="hcl.keyword" spell-check="true">
                 <strings>
                     <!-- <string>list</string> -->
                     <!-- <string>map</string> -->
@@ -169,7 +169,7 @@
         <!-- generic block types - variables and locals -->
         <collection name="blocks">
         <!-- top-level variable and output blocks -->
-            <scope name="hcl.block.variable">
+            <scope name="hcl.block.variable" spell-check="true">
                 <symbol type="block">
                     <context behavior="subtree" fold-type="function" />
                 </symbol>
@@ -194,7 +194,7 @@
                     <include syntax="self" collection="objects" />
                 </subscopes>
             </scope>
-            <scope name="hcl.block.locals">
+            <scope name="hcl.block.locals" spell-check="true">
                 <symbol type="block">
                     <context behavior="subtree" fold-type="function" />
                 </symbol>
@@ -222,7 +222,7 @@
                     <include syntax="self" collection="expressions" />
                 </subscopes>
             </scope>
-            <scope name="hcl.block.provider">
+            <scope name="hcl.block.provider" spell-check="true">
                 <symbol type="block">
                     <context behavior="subtree" fold-type="function" />
                 </symbol>
@@ -247,7 +247,7 @@
                     <include syntax="self" collection="types" />
                 </subscopes>
             </scope>
-            <scope name="hcl.block.resource.definition">
+            <scope name="hcl.block.resource.definition" spell-check="true">
                 <symbol type="block">
                     <context behavior="subtree" foldable="true" fold-type="function" />
                 </symbol>
@@ -427,7 +427,7 @@
                 Specifically creating expressions for the various major types
                 to capture that var. and local. are special
             -->
-            <scope name="hcl.reference.variable">
+            <scope name="hcl.reference.variable" spell-check="true">
                 <starts-with>
                     <expression>
                         (?x:                                # turn on extended mode, allows arbitrary whitespace
